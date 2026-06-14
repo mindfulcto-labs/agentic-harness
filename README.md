@@ -106,16 +106,6 @@ The first row in a run sets `previous_hash = "0" * 64` (genesis). Verification w
 
 This format aligns with EU AI Act Article 12 (automatic event logging for high-risk systems). The cross-walk to ISO/IEC 42001 Annex A.7 lives in the companion [`compliance-as-code`](https://github.com/mindfulcto-labs/compliance-as-code) repo.
 
-## What this proves
-
-The repo is a public, inspectable artefact for these claims, which I make on my CV:
-
-- **"filed a patent application (pending) on agentic AI for regulated workflows"** — this is the shape, in a non-customs domain.
-- **"autonomy budgets and blast-radius controls"** — that's the `budget` and `blast_radius` modules.
-- **"regulator-legible audit trails"** — that's the hash-chained `audit` module.
-
-If you are recruiting at exec engineering altitude and you want to know whether the CV holds up, read [`harness/`](harness/) and [`tests/`](tests/) before the interview.
-
 ## Limitations
 
 - **No model training, no orchestration of >5 concurrent agents, no built-in human-in-the-loop UI.** The harness is a wrapper, not a platform. If you want a platform, look at [Microsoft AI Agent Governance Toolkit](https://github.com/microsoft/aigovernance-toolkit) or LangChain Vaara — both ship more surface area, less opinion.
