@@ -58,7 +58,7 @@ from harness import verify_chain
 assert verify_chain(writer.events("run-001"))
 ```
 
-Worked example: [`examples/procurement_triage/`](examples/procurement_triage/) wires the three primitives into a small LangGraph agent that triages purchase requests under budget and policy.
+Worked example: [`examples/procurement_triage/`](examples/procurement_triage/) wires the three primitives into a small agent that triages purchase requests under budget and policy. The example is plain Python in v0.1; LangGraph, CrewAI, and AutoGen adapters land in v0.2.
 
 ## Architecture
 
@@ -108,7 +108,7 @@ This format aligns with EU AI Act Article 12 (automatic event logging for high-r
 
 ## Limitations
 
-- **No model training, no orchestration of >5 concurrent agents, no built-in human-in-the-loop UI.** The harness is a wrapper, not a platform. If you want a platform, look at [Microsoft AI Agent Governance Toolkit](https://github.com/microsoft/aigovernance-toolkit) or LangChain Vaara — both ship more surface area, less opinion.
+- **No model training, no orchestration of >5 concurrent agents, no built-in human-in-the-loop UI.** The harness is a wrapper, not a platform. If you want a platform, look at LangChain's Vaara or a vendor governance suite — they ship more surface area, less opinion.
 - **Postgres adapter ships in v0.2.** v0.1 has the in-memory writer (for quickstart and tests) and the abstract `AuditWriter` interface so sites can plug their own.
 - **OPA integration ships in v0.2.** v0.1 has the policy function abstraction and the reference default policy.
 
@@ -122,13 +122,10 @@ This format aligns with EU AI Act Article 12 (automatic event logging for high-r
 
 This is a public reference implementation of patterns inspired by production AI systems. It does not reference, replicate, or derive from any employer's internal architecture, source code, or proprietary designs. All data is synthetic or drawn from public sources.
 
-## Companion reading
+## Further reading
 
-The design choices are explained in three essays at [themindfulcto.com](https://themindfulcto.com):
-
-- _Autonomy budgets: three orthogonal kill switches that catch three different runaway shapes._
-- _Blast radius: why three tiers, not five, and what to do when the agent calls a write-irreversible tool._
-- _Hash-chained audit logs for EU AI Act Article 12: the cheapest tamper-evident pattern._
+- The ADRs in [`docs/adr/`](docs/adr/) explain the two largest design choices: three blast-radius tiers, and SHA-256 hash chains over signatures.
+- Related blog notes on the operating model for AI-augmented engineering at [themindfulcto.com](https://themindfulcto.com).
 
 ## License
 
