@@ -127,6 +127,14 @@ This is a public reference implementation of patterns inspired by production AI 
 - The ADRs in [`docs/adr/`](docs/adr/) explain the two largest design choices: three blast-radius tiers, and SHA-256 hash chains over signatures.
 - Related blog notes on the operating model for AI-augmented engineering at [themindfulcto.com](https://themindfulcto.com).
 
+## Related projects
+
+- [`aidlc`](https://github.com/mindfulcto-labs/aidlc): AI-driven development lifecycle playbooks.
+- [`engineering-standards`](https://github.com/mindfulcto-labs/engineering-standards): engineering standards and checklists.
+- [`compliance-as-code`](https://github.com/mindfulcto-labs/compliance-as-code): compliance controls as code, with AIBOM.
+- [`apiloom-ce`](https://github.com/mindfulcto-labs/apiloom-ce): open-source API management platform.
+- [`awesome-ai-governance`](https://github.com/mindfulcto-labs/awesome-ai-governance): curated AI governance list.
+
 ## License
 
 [Apache License 2.0](LICENSE).
