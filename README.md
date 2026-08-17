@@ -15,7 +15,7 @@ The shape is the one I described in a patent application I filed during my time 
 
 ## Why this exists
 
-In April 2026 Anthropic took down 8,100 GitHub repositories citing IP infringement. In March 2026 Microsoft shipped the AI Agent Governance Toolkit. The category — "production-grade agent governance primitives, open-source, opinionated, focused-domain" — has shifted from optional to expected. This is my answer.
+Agent systems are reaching production faster than the governance primitives around them. In April 2026 a single DMCA notice, later retracted, took down about 8,100 GitHub fork repositories in one sweep, a reminder of how many systems depend on upstream governance decisions. Platform vendors now ship agent governance toolkits of their own. Production-grade governance primitives, open source and opinionated, have moved from optional to expected. This is my answer.
 
 The opinions:
 
