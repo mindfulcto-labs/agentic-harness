@@ -7,9 +7,9 @@
 
 A small Python library that wraps any agent (LangGraph, CrewAI, AutoGen, plain function calls) with three primitives:
 
-1. **Autonomy budget** — the agent gets a fixed budget of tool calls, tokens, and wall-clock seconds. When the budget runs out, the harness kills the run and records the kill point.
-2. **Blast radius** — every tool the agent can call is classified `READ_ONLY`, `WRITE_REVERSIBLE`, or `WRITE_IRREVERSIBLE`. The harness gates each call through a policy. The default policy refuses `WRITE_IRREVERSIBLE` unless the tool descriptor explicitly opts into two-person approval.
-3. **Hash-chained audit trail** — every event the harness emits is appended to a SHA-256 chain. A regulator (or your own auditor) can verify the chain end-to-end without trusting the database administrator.
+1. **Autonomy budget**: the agent gets a fixed budget of tool calls, tokens, and wall-clock seconds. When the budget runs out, the harness kills the run and records the kill point.
+2. **Blast radius**: every tool the agent can call is classified `READ_ONLY`, `WRITE_REVERSIBLE`, or `WRITE_IRREVERSIBLE`. The harness gates each call through a policy. The default policy refuses `WRITE_IRREVERSIBLE` unless the tool descriptor explicitly opts into two-person approval.
+3. **Hash-chained audit trail**: every event the harness emits is appended to a SHA-256 chain. A regulator (or your own auditor) can verify the chain end-to-end without trusting the database administrator.
 
 The shape is the one I described in a patent application I filed during my time at A.P. Moller-Maersk on agentic AI for regulated workflows. This repo is a clean-room, public-domain reference implementation in a non-customs domain (the worked example is procurement triage). No employer IP, no client data, no proprietary architecture.
 
@@ -21,7 +21,7 @@ The opinions:
 
 - **Budgets are orthogonal, not unified.** A single "max steps" counter conflates three failure modes. Three budgets catch three different runaway shapes.
 - **Blast radius has exactly three tiers.** Practitioners can hold three tiers in their head; five tiers turn the policy into an exercise. The patent application uses the same three.
-- **The audit log is append-only and hash-chained.** Not because every site needs cryptographic non-repudiation, but because the alternative — trusting your DBA, your backups, and your own code to never silently rewrite history — is the one a regulator will not accept.
+- **The audit log is append-only and hash-chained.** Not because every site needs cryptographic non-repudiation, but because the alternative (trusting your DBA, your backups, and your own code to never silently rewrite history) is the one a regulator will not accept.
 
 ## Quickstart
 
@@ -65,7 +65,7 @@ Worked example: [`examples/procurement_triage/`](examples/procurement_triage/) w
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
 │                                  agent                                   │
-│  (LangGraph node, CrewAI task, plain function — anything that calls a    │
+│  (LangGraph node, CrewAI task, plain function: anything that calls a     │
 │   tool and consumes tokens)                                              │
 └──────────────────────────────────────────────────────────────────────────┘
                                     │
@@ -108,15 +108,15 @@ This format aligns with EU AI Act Article 12 (automatic event logging for high-r
 
 ## Limitations
 
-- **No model training, no orchestration of >5 concurrent agents, no built-in human-in-the-loop UI.** The harness is a wrapper, not a platform. If you want a platform, look at LangChain's Vaara or a vendor governance suite — they ship more surface area, less opinion.
+- **No model training, no orchestration of >5 concurrent agents, no built-in human-in-the-loop UI.** The harness is a wrapper, not a platform. If you want a platform, look at LangChain's Vaara or a vendor governance suite. They ship more surface area and less opinion.
 - **Postgres adapter ships in v0.2.** v0.1 has the in-memory writer (for quickstart and tests) and the abstract `AuditWriter` interface so sites can plug their own.
 - **OPA integration ships in v0.2.** v0.1 has the policy function abstraction and the reference default policy.
 
 ## Roadmap
 
-- **v0.2** — Postgres audit writer, OPA policy gate, two-person approval workflow for `WRITE_IRREVERSIBLE`, audit-chain verification CLI.
-- **v0.3** — CrewAI and AutoGen adapters. Streamlit replay UI for past runs.
-- **v0.4** — Drift detection on budget configurations. Per-tool eval harness for harness overhead (latency, token cost).
+- **v0.2**: Postgres audit writer, OPA policy gate, two-person approval workflow for `WRITE_IRREVERSIBLE`, audit-chain verification CLI.
+- **v0.3**: CrewAI and AutoGen adapters. Streamlit replay UI for past runs.
+- **v0.4**: Drift detection on budget configurations. Per-tool eval harness for harness overhead (latency, token cost).
 
 ## IP statement
 
